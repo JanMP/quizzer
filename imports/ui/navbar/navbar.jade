@@ -1,0 +1,20 @@
+template(name="navbar")
+  .ui.fixed.transparent.main.menu
+    .header.item 
+      i.large.pin.icon
+    a.item(class=isActiveRoute('info') href="/info")
+      i.large.info.icon
+    .right.menu
+      a.item(class=isActiveRoute('home') href="/")
+        i.large.list.icon
+      if currentUser
+        a.item(class=isActiveRoute('myPins') href="/my-pins")
+          i.large.icons
+            i.user.icon
+            i.corner.pin.icon
+        a.item(class=isActiveRoute('addPin') href="/add-pin")
+          i.large.icons
+            i.pin.icon
+            i.corner.plus.icon
+      +loginButtons(allign="right")
+          
