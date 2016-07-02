@@ -1,29 +1,19 @@
 { Mongo } = require "meteor/mongo"
 
-Quizzes = new Mongo.Collection "quizzes"
-Quizzes.schema = new SimpleSchema
-  title :
+Games = new Mongo.Collection "games"
+Games.schema = new SimpleSchema
+  name :
     type : String
-Quizzes.attachSchema Quizzes.schema
-exports.Quizzes = Quizzes
+Games.attachSchema Games.schema
+exports.Games = Quizzes
 
-Questions = new Mongo.Collection "questions"
+Questions = new Mongo.Collection "cards"
 Questions.schema = new SimpleSchema
-  text :
+  name :
     type : String
-  quizId :
+  flavorText :
+    type : String
+  gameId :
     type : String
 Questions.attachSchema Questions.schema
 exports.Questions = Questions
-
-Answers = new Mongo.Collection "answers"
-Answers.schema = new SimpleSchema
-  text :
-    type : String
-  questionId :
-    type : String
-  correct :
-    type : Boolean
-    optional : true
-Answers.attachSchema Answers.schema
-exports.Answers = Answers
