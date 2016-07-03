@@ -9,5 +9,4 @@ Template.highScores.viewmodel
 
 Template.highScoresItem.viewmodel
   color : ->
-    console.log @data()
     ["yellow", "orange", "red"][@index()] or "grey"
