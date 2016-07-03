@@ -1,3 +1,11 @@
 template(name="gameList")
   .ui.text.container.segment
-    h1.header gameList
+    h3.header Select a Game to Play
+    .ui.relaxed.selection.list
+      each games
+        +gameListItem
+        
+template(name="gameListItem")
+  .item($b="click : selectGame")
+    .content
+      .header #{name}

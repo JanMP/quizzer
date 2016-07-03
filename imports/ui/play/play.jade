@@ -1,3 +1,27 @@
 template(name="play")
-  .ui.text.container.segment
-    h1.header play
+  .ui.center.aligned.text.container($b="class : {loading : loading}")
+    unless loading
+      h1.header #{gameName} Quiz
+      .ui.green.label
+        i.thumbs.up.icon
+        | #{rightCount} = #{percent}%
+      .ui.red.label
+        i.thumbs.down.icon
+        | #{wrongCount}
+      .ui.blue.label Streak #{streak}
+      
+      with oneCard
+        +flavorText
+        
+      .ui.buttons
+        each threeCards
+          +answerButton
+      
+      h3.header($b="text : result, if : showResult")
+      
+
+template(name="answerButton")
+  button.ui.button($b="text : name, click : parent.selectAnswer(_id), disable : parent.showResult")
+
+template(name="flavorText")
+  h3.header($b="html : flavor")

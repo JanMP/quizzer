@@ -1,7 +1,10 @@
 template(name="layout")
-  +navbar
-  +Template.dynamic(template=main)
-  +footer
+  .site
+    +navbar
+    .sitecontent
+      +Template.dynamic(template=main)
+    .sitefooter
+      +footer
 
 template(name="footer")
   .ui.center.aligned.container
