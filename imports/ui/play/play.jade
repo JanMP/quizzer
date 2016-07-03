@@ -1,27 +1,28 @@
 template(name="play")
   .ui.center.aligned.text.container($b="class : {loading : loading}")
-    unless loading
-      h1.header #{gameName} Quiz
-      .ui.green.label
-        i.thumbs.up.icon
-        | #{rightCount} = #{percent}%
-      .ui.red.label
-        i.thumbs.down.icon
-        | #{wrongCount}
-      .ui.blue.label Streak #{streak}
-      
-      with oneCard
-        +flavorText
-        
-      .ui.buttons
-        each threeCards
-          +answerButton
-      
-      h3.header($b="text : result, if : showResult")
+    h1.header #{gameName} Quiz
+    .ui.green.label
+      i.thumbs.up.icon
+      | #{rightCountOutput} = #{percent}%
+    .ui.red.label
+      i.thumbs.down.icon
+      | #{wrongCountOutput}
+    .ui.blue.label current Streak #{streakOutput}
+    .ui.pink.label longest Streak #{longestStreakOutput}
+    unless player
+      p this is your local data, log in to get listed in the high-scores
+    with oneCard
+      +flavorText
+    .ui.buttons
+      each threeCards
+        +answerButton
+    h3.header($b="text : result, if : showResult")
       
 
 template(name="answerButton")
   button.ui.button($b="text : name, click : parent.selectAnswer(_id), disable : parent.showResult")
 
 template(name="flavorText")
-  h3.header($b="html : flavor")
+  .ui.text.container.segment
+    h3.header($b="html : flavor")
+    p This card has been answered correctly #{rightCount} times out of #{totalCount} times. That's #{percent}%.

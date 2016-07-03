@@ -1,7 +1,8 @@
 { Meteor } = require "meteor/meteor"
-{ Games, Cards } = require "/imports/api/collections.coffee"
+{ Games, Cards, Players } = require "/imports/api/collections.coffee"
 
 Meteor.publish "quizzer.games", -> Games.find()
+Meteor.publish "quizzer.players", -> Players.find()
 
 Meteor.publish "quizzer.cards",
   (gameIdSelector) ->

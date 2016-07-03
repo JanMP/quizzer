@@ -8,6 +8,10 @@ template(name="navbar")
     .right.menu
       a.item(class=isActiveRoute('home') href="/")
         i.large.list.icon
+        | game list
+      a.item(class=isActiveRoute('high-scores') href="/high-scores")
+        i.large.star.icon
+        | high-scores
       //if currentUser
         a.item(class=isActiveRoute('myPins') href="/my-pins")
           i.large.icons

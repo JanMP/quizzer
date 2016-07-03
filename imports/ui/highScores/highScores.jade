@@ -1,0 +1,15 @@
+template(name="highScores")
+  .ui.text.container.segment
+    h1.header high-scores
+    .ui.relaxed.divided.list
+      //if you use @index you have to pass the data as an attribute, too...
+      each players
+        +highScoresItem(index=@index item=this)
+        
+template(name="highScoresItem")
+  .item
+    i.large.middle.aligned.star.icon($b="class : color")
+    with item
+      .content
+        .header #{name}
+        .description longest Streak: #{longestStreak}, current Streak #{streak}
